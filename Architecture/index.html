@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoMA Exhibit</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+ }
+        body {
+            background-color: white;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            border: 2px solid black;
+            margin: 20px auto;
+            padding: 0;
+            max-width: 100%;
+        }
+        .row {
+            margin: 0;
+        }
+        .navbar {
+            background-color: #fff;
+            border-bottom: 2px solid black;
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .navbar-nav .nav-link {
+            color: black;
+            font-weight: bold;
+            margin: 0 15px;
+        }
+        .header, .content {
+            padding: 20px;
+            border-bottom: 2px solid black;
+        }
+        .header {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .libre-baskerville-regular {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.libre-baskerville-bold {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.libre-baskerville-regular-italic {
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+
+.contact-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-section h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .contact-column {
+            flex: 1;
+            padding: 20px;
+            text-align: left;
+            border-right: 2px solid black;
+        }
+
+        .contact-column:last-child {
+            border-right: none;
+        }
+
+        .contact-column h3 {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .contact-details {
+            margin-top: 20px;
+        }
+
+        .contact-details h4 {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+
+        .contact-details p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .contact-info {
+                flex-direction: column;
+            }
+
+            .contact-column {
+                border-right: none;
+                border-bottom: 2px solid black;
+            }
+
+            .contact-column:last-child {
+                border-bottom: none;
+            }
+
+            .contact-column h3 {
+                writing-mode: horizontal-tb;
+                transform: none;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-section h1 {
+                font-size: 2rem;
+            }
+
+            .contact-column {
+                padding: 10px;
+            }
+
+            .contact-details h4 {
+                font-size: 1rem;
+            }
+
+            .contact-details p {
+                font-size: 0.875rem;
+            }
+        }
+        
+       
+        
+      
+
+        .banner {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            font-size: 1.5rem;
+            border-bottom: 2px solid black;
+        }
+        .content .box {
+            padding: 20px;
+            border: 2px solid black;
+            margin: 10px 0;
+        }
+        .box img {
+            width: 100%;
+            height: auto;
+        }
+        .box p {
+            margin: 10px 0;
+        }
+        .footer {
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-top: 2px solid black;
+        }
+        @media (max-width: 767.98px) {
+            .navbar-nav {
+                flex-direction: column;
+                width: 100%;
+            }
+            .navbar-nav .nav-link {
+                margin: 10px 0;
+            }
+        }
+
+        .grid-item {
+            border: 1px solid red;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .grid-item p {
+            margin: 10px;
+            font-weight: normal;
+            text-align: left;
+        }
+        .circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: white;
+            border: 2px solid black;
+        }
+        .font-sample {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        
+
+        .box {
+            position: relative;
+        }
+
+        .box img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .content:hover .overlay {
+            opacity: 1;
+        }
+
+        .text {
+            color: white;
+            font-size: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .content {
+                width: 100%;
+            }
+
+            .text {
+                font-size: 16px;
+            }
+        }
+
+ 
+
+   
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">MoMA</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#About">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#works">works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Team">Team</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Contact">Contact</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <div class="header">
+            MAKE A WISH. MAKE A
+        </div>
+
+        <!-- Content -->
+        <div class="row" id="About">
+            <div class="col-md-6 content">
+                <div class="box libre-baskerville-regular">
+                    <p>“An important aspect that should not be neglected while designing buildings is the awareness of the current trends or fashions to use certain types of materials. In this case motivation for façade replacements will not be dependent on their in-service performance but will be rather triggered by personal motivation to follow specific styles.</p>
+                    <br>
+                    <p>The perception of aesthetical quality and related awareness of “beauty” has changed over the ages and will continue to change in future. However, there are some universal attributes that are perceived as attractive for the built environment. For a building to become remarkable, requires knowledgeable implementation of materials that are compatible within the local context. Wood and other bio-based building materials are certainly an attractive resource for the modern construction sector, however confidence regarding their proper selection, use and maintenance should be based on profound know-how and best practices shared between architects, designers, investors and builders.</p><br>
+                </div>
+            </div>
+            <div class="col-md-6 content">
+                <div class="box" style="background-color: #ffffff; ">
+                    <img src="img/Black and white street photography european architecture building cityscape urban.jpeg" alt="height: 40px;">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 content">
+                <div class="box">
+                    <p>Charles White: A Retrospective is organized by Esther Adler, Associate Curator, Department of Drawings and Prints; and Sarah Kelly Oehler, Field-McCormick Chair and Curator of American Art, The Art Institute of Chicago.</p>
+                    <p>Prior to its MoMA presentation, the exhibition will be on view at The Art Institute of Chicago from June 8 through September 3, 2018. Following its MoMA presentation, the exhibition will travel to the Los Angeles County Museum of Art, where it will be on view from February 17 through June 9, 2019.</p>
+                    <p>Hear Charles White, Harry Belafonte, Kerry James Marshall, and others reflect on White’s legacy as an artist, educator and social justice advocate.</p>
+                </div>
+            </div>
+            <div class="col-md-6 content">
+                <div class="box libre-baskerville-regular">
+                    <p>“Architecture is about trying to make the world a little more like our dreams.” – Bjarke Ingels
+
+                        </p>
+                    <p>A lot of projects by Bjarke Ingels Group, or BIG, certainly feel like dreams come true. The firm is never afraid to think out of the box and come up with projects that reimagine form, program, or urban life.</p>
+                    <p>THE MUSEUM OF MODERN ART CONTRIBUTORS</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="header" id="Team">
+            TEAM.
+        </div>
+        <div class="row">
+          <div class="col-md-4 content">
+                
+                <div class="box">
+                    <img src="img/Herzog & de Meuron.jpeg"  alt="height: 200px">
+                    <div class="overlay">
+                        <div class="text">Herzog & de Meuron</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 content">
+                <div class="box">
+                    <div style="background-color: #e8e5db; ">
+                        <img src="img/Famed Architect Philip Johnson’s Hidden Nazi Past.jpeg"  alt="height: 200px">
+                        <div class="overlay">
+                            <div class="text">Herzog & de Meuron</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 content">
+                <div class="box">
+                    <img src="img/Gallery of Portraits of Álvaro Siza by Fernando Guerra  - 6.jpeg" alt="">
+                    <div class="overlay">
+                        <div class="text">Herzog & de Meuron</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 content">
+                <div class="box">
+                    <img src="img/Japanese architect Tadao Ando’s design exhibition to debut in Beijing.jpeg" alt="">
+                    <div class="overlay">
+                        <div class="text">Herzog & de Meuron</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 content">
+                <div class="box">
+                    <img src="img/Interview_ Daniel Libeskind on How to Talk to an Architect.jpeg" alt="">
+                    <div class="overlay">
+                        <div class="text">Herzog & de Meuron</div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4 content">
+                <div class="box">
+                    <img src="img/10 impressive works by Renzo Piano - Parametric Architecture.jpeg" alt=""><div class="overlay">
+                        <div class="text">Herzog & de Meuron</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="header" id="works">
+            WORKs.
+        </div>
+        <div class="row">
+          <div class="col-md-4 content">
+                
+                <div class="box">
+                    <img src="img/Italian Skyscraper.jpeg"  alt="height: 200px">
+                    <div class="overlay">
+                        <div class="text">Herzog & de Meuron</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 content">
+                <div class="box">
+                    <div style="background-color: #e8e5db; ">
+                        <img src="img/The Best Brutalist Buildings Around The World___.jpeg"  alt="height: 200px">
+                        <div class="overlay">
+                            <div class="text">Herzog & de Meuron</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 content">
+                <div class="box">
+                    <a target="_blank" href="img/Architecture of Doom.jpeg">
+                    <img src="img/Architecture of Doom.jpeg" alt="" ></a>
+                    <div class="overlay">
+                        <div class="text">Herzog & de Meuron</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 content">
+                <div class="box">
+                    <img src="img/343ab1ba-18b5-4997-a700-e6bb5fc0cd49.jpeg" alt="">
+                    <div class="overlay">
+                        <div class="text">Herzog & de Meuron</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 content">
+                <div class="box">
+                    <img src="img/Hard matters_ Concrete Concept tours the world of brutalism.jpeg" alt="">
+                    <div class="overlay">
+                        <div class="text">Herzog & de Meuron</div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4 content">
+                <div class="box">
+                    
+                    <img src="img/Enrico Castiglioni - Elementary School, Busto Arsizio, Italy, 1960s.jpeg" alt=""><div class="overlay">
+                        <div class="text">Herzog & de Meuron</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+    
+
+        <div class="container">
+            <div class="contact-section" id="Contact">
+                <h1>Contact.</h1>
+            </div>
+            <div class="contact-info">
+                <div class="contact-column">
+                    <h3>Management</h3>
+                    <div class="contact-details">
+                        <h4>Georgiy Mergelov</h4>
+                        <p>mgmt@teslaboy.com</p>
+                        <p>+7-903-577-98-37</p>
+                        <h4>Andre Howard</h4>
+                        <p>(U.S & Rest of the World)</p>
+                        <p>andre@mediamusicinc.com</p>
+                        <p>+1-917-399-4038</p>
+                    </div>
+                </div>
+                <div class="contact-column">
+                    <h3>PR department</h3>
+                    <div class="contact-details">
+                        <h4>Andrey Sergeev</h4>
+                        <p>pr@teslaboy.com</p>
+                        <p>+7-903-650-15-06</p>
+                    </div>
+                </div>
+                <div class="contact-column">
+                    <h3>Bookings</h3>
+                    <div class="contact-details">
+                        <h4>Andre Howard</h4>
+                        <p>(U.S & Rest of the World)</p>
+                        <p>andre@mediamusicinc.com</p>
+                        <p>+1-917-399-4038</p>
+                        <h4>Georgiy Mergelov</h4>
+                        <p>mgmt@teslaboy.com</p>
+                        <p>+7-903-577-98-37</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Footer -->
+        <div class="footer">
+            Who gives a damn - Happening now.
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
